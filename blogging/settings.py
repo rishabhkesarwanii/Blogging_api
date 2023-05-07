@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import environ
 
-env = environ.Env(
+env = environ.Env(      #set default values and casting
     DEBUG=(bool, False)
 )
 
@@ -26,7 +26,7 @@ if READ_DOT_ENV_FILE:
 
 DEBUG = env('DEBUG') # False if not in os.environ
 
-SECRET_KEY= env('SECRET_KEY') 
+SECRET_KEY= env('SECRET_KEY')  
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,8 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
+    #local apps
     'api',
 
+
+    #third party apps
     'rest_framework',
     'knox',
     "whitenoise.runserver_nostatic",
@@ -90,12 +94,12 @@ WSGI_APPLICATION = 'blogging.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD' : env("DB_PASSWORD"),
-        'HOST' : env("DB_HOST"),
-        'PORT' : env("DB_PORT"),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', #postgresql database
+        'NAME': env("DB_NAME"),     #database name
+        'USER': env("DB_USER"),     #database user
+        'PASSWORD' : env("DB_PASSWORD"),       #database password
+        'HOST' : env("DB_HOST"),    #database host
+        'PORT' : env("DB_PORT"),    #database port
     }
 }
 
@@ -141,13 +145,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-REST_FRAMEWORK = { #
+REST_FRAMEWORK = { #rest framework settings
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication', #Knox authentication class that we are using
     ]
 }
+
+
 
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/') 
@@ -163,7 +169,11 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-if not DEBUG:
+
+
+
+
+if not DEBUG:  #if not in development
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True

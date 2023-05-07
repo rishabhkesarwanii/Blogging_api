@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer): #ModelSerializer for the User
 class RegisterSerializer(serializers.ModelSerializer): #ModelSerializer for the User model
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password')
+        fields = ('id', 'username', 'email', 'password') #fields that will be returned in the response
         extra_kwargs = {'password': {'write_only': True}}   #This is to make sure that the password is not returned in the response
 
     def create(self, validated_data):
@@ -28,5 +28,5 @@ class RegisterSerializer(serializers.ModelSerializer): #ModelSerializer for the 
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogs
-        fields = ('id','title', 'content', 'image')
-        read_only_fields = ('id',) #fields that will be returned in the response and cannot be edited
+        fields = ('id','title', 'content', 'image', 'date_created', 'author') #fields that will be returned in the response
+        read_only_fields = ('id','date_created', 'author',) #fields that will be returned in the response and cannot be edited
