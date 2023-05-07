@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #Import from rest_framework
 from rest_framework.views import APIView
@@ -65,9 +66,12 @@ class CreateBlog(generics.GenericAPIView):
 class ListAllBlogs(APIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = BlogSerializer
+    #paginate_by = 10
+    
 
     def get(self, request, *args, **kwargs):
         blogs = Blogs.objects.all()
+        #paginator = Paginator(blogs, self.paginate_by)
         serializer = BlogSerializer(blogs, many=True, context={"request": request})
         return Response({"Blogs":serializer.data}, status=status.HTTP_200_OK)
     
@@ -81,3 +85,39 @@ class ListOneBlog(APIView):
         blogs = get_object_or_404(Blogs, id=pk)
         serializer = BlogSerializer(blogs, context={"request": request})
         return Response({"Blog":serializer.data}, status=status.HTTP_200_OK)
+    
+
+
+class EditBlog(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = BlogSerializer
+
+    def put(self, request, pk):
+        user = request.user
+        blog = get_object_or_404(Blogs, id=pk)
+        if blog.author == user:
+            form = BlogForm(request.POST, request.FILES, instance=blog)
+            if form.is_valid():
+                form.save()
+                return Response({
+                    "blog": BlogSerializer(blog, context={'request': request}).data,
+                    "message": "Blog updated successfully"
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"message": "You are not authorized to edit this blog"}, status=status.HTTP_401_UNAUTHORIZED)
+        
+
+class DeleteBlog(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = BlogSerializer
+
+    def delete(self, request, pk):
+        user = request.user
+        blog = get_object_or_404(Blogs, id=pk)
+        if blog.author == user:
+            blog.delete()
+            return Response({"message": "Blog deleted successfully"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"message": "You are not authorized to delete this blog"}, status=status.HTTP_401_UNAUTHORIZED)

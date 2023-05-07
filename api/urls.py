@@ -7,15 +7,20 @@ from .views import (
     CreateBlog,
     ListAllBlogs,
     ListOneBlog,
+    EditBlog,
+    DeleteBlog,
 )
 
 urlpatterns = [
     
-    path('register/', RegisterAPI.as_view()),
-    path('login/', LoginAPI.as_view()),
-    path('logout/', knox_views.LogoutView.as_view()),
+    path('register', RegisterAPI.as_view()),
+    path('login', LoginAPI.as_view()),
+    path('logout', knox_views.LogoutView.as_view()),
 
-    path('create/', CreateBlog.as_view()),
-    path('listall/', ListAllBlogs.as_view()),
-    path('list/<int:pk>/', ListOneBlog.as_view()),
+    path('create', CreateBlog.as_view()),
+    path('posts', ListAllBlogs.as_view()),
+    path('posts/<int:pk>', ListOneBlog.as_view()),
+    path('posts/<int:pk>/edit', EditBlog.as_view()),
+    path('posts/<int:pk>/delete', DeleteBlog.as_view()),
+    
 ]
