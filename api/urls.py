@@ -11,6 +11,8 @@ from .views import (
     DeleteBlog,
 )
 
+app_name = 'api'
+
 urlpatterns = [
     
     #Authentication

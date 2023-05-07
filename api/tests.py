@@ -13,7 +13,7 @@ class EndpointTests(APITestCase):
 
 
     def test_register_user(self):
-        url = reverse('register')
+        url = reverse('api:register')
         data = {'username': 'newuser', 'password': 'newpassword'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -23,7 +23,7 @@ class EndpointTests(APITestCase):
 
 
     def test_login_user(self):
-        url = reverse('login')
+        url = reverse('api:login')
         data = {'username': 'testuser', 'password': 'testpassword'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -34,7 +34,7 @@ class EndpointTests(APITestCase):
 
     def test_create_blog(self):
         self.client.login(username='testuser', password='testpassword')
-        url = reverse('create-blog')
+        url = reverse('api:create-blog')
         data = {'title': 'New Blog', 'content': 'This is a new blog.'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -45,7 +45,7 @@ class EndpointTests(APITestCase):
 
     def test_list_all_blogs(self):
         self.client.login(username='testuser', password='testpassword')
-        url = reverse('list-all-blogs')
+        url = reverse('api:list-all-blogs')
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['Blogs']), 1)
@@ -55,7 +55,7 @@ class EndpointTests(APITestCase):
 
     def test_list_one_blog(self):
         self.client.login(username='testuser', password='testpassword')
-        url = reverse('list-one-blog', kwargs={'pk': self.blog.id})
+        url = reverse('api:list-one-blog', kwargs={'pk': self.blog.id})
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['Blog']['title'], self.blog.title)
@@ -64,7 +64,7 @@ class EndpointTests(APITestCase):
 
     def test_edit_blog(self):
         self.client.login(username='testuser', password='testpassword')
-        url = reverse('edit-blog', kwargs={'pk': self.blog.id})
+        url = reverse('api:edit-blog', kwargs={'pk': self.blog.id})
         data = {'title': 'Updated Blog', 'content': 'This is an updated blog.'}
         response = self.client.put(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -75,7 +75,7 @@ class EndpointTests(APITestCase):
 
     def test_delete_blog(self):
         self.client.login(username='testuser', password='testpassword')
-        url = reverse('delete-blog', kwargs={'pk': self.blog.id})
+        url = reverse('api:delete-blog', kwargs={'pk': self.blog.id})
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Blogs.objects.count(), 0)
