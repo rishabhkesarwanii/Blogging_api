@@ -18,7 +18,7 @@ urlpatterns = [
     path('logout', knox_views.LogoutView.as_view()),
 
     path('create', CreateBlog.as_view()),
-    path('posts', ListAllBlogs.as_view()),
+    path('posts/', ListAllBlogs.as_view()),
     path('posts/<int:pk>', ListOneBlog.as_view()),
     path('posts/<int:pk>/edit', EditBlog.as_view()),
     path('posts/<int:pk>/delete', DeleteBlog.as_view()),

@@ -63,18 +63,30 @@ class CreateBlog(generics.GenericAPIView):
             return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
+from django.core.paginator import Paginator
+
 class ListAllBlogs(APIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = BlogSerializer
-    #paginate_by = 10
-    
 
     def get(self, request, *args, **kwargs):
         blogs = Blogs.objects.all()
-        #paginator = Paginator(blogs, self.paginate_by)
-        serializer = BlogSerializer(blogs, many=True, context={"request": request})
-        return Response({"Blogs":serializer.data}, status=status.HTTP_200_OK)
-    
+        items_per_page = 10 # Define the number of items per page
+        paginator = Paginator(blogs, items_per_page)   #Create a Paginator object
+        page_number = request.GET.get('page', 1) #Get the current page number from the request query parameters
+        current_page = paginator.get_page(page_number) # Get the current page from the Paginator
+        serializer = BlogSerializer(current_page, many=True, context={"request": request})# Serialize the current page's data
+        
+        # Prepare the response data
+        response_data = {
+            "Blogs": serializer.data,
+            "current_page": current_page.number,
+            "total_pages": paginator.num_pages,
+            "total_items": paginator.count,
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
 
 
 class ListOneBlog(APIView):

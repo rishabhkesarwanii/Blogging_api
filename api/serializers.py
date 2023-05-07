@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer): #ModelSerializer for the User
 
 
 
+
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer): #ModelSerializer for the User model
     class Meta:
