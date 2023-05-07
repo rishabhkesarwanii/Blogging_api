@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login
 
 #Import from rest_framework
@@ -9,7 +9,9 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework import permissions
 
 
-from .serializers import UserSerializer, RegisterSerializer
+from .serializers import UserSerializer, RegisterSerializer, BlogSerializer
+from .models import Blogs
+from .forms import BlogForm
 
 
 #Import from knox
@@ -41,3 +43,41 @@ class LoginAPI(LoginView):
         return super(LoginAPI, self).post(request, format=None)
 
 
+class CreateBlog(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,) #Only authenticated users can view this page
+    serializer_class = BlogSerializer
+
+    def post(self, request, *args, **kwargs):
+        user = request.user #get the user that is logged in
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = user
+            blog.save()
+            return Response({
+                "blog": BlogSerializer(blog, context=self.get_serializer_context()).data,
+                "message": "Blog created successfully"
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+class ListAllBlogs(APIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = BlogSerializer
+
+    def get(self, request, *args, **kwargs):
+        blogs = Blogs.objects.all()
+        serializer = BlogSerializer(blogs, many=True, context={"request": request})
+        return Response({"Blogs":serializer.data}, status=status.HTTP_200_OK)
+    
+
+
+class ListOneBlog(APIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = BlogSerializer
+
+    def get(self, request, pk):
+        blogs = get_object_or_404(Blogs, id=pk)
+        serializer = BlogSerializer(blogs, context={"request": request})
+        return Response({"Blog":serializer.data}, status=status.HTTP_200_OK)

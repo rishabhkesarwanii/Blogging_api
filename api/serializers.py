@@ -1,5 +1,6 @@
 from rest_framework import serializers #import serializers from rest_framework
 from django.contrib.auth.models import User #import the User model
+from .models import Blogs #import the Blogs model
 
 
 # User Serializer
@@ -21,3 +22,10 @@ class RegisterSerializer(serializers.ModelSerializer): #ModelSerializer for the 
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password']) #create a new user
 
         return user #return the user
+
+
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blogs
+        fields = ('id','title', 'content', 'image')
+        read_only_fields = ('id',) #fields that will be returned in the response and cannot be edited
