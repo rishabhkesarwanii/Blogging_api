@@ -12,19 +12,26 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+
+READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False) #true in local development
+if READ_DOT_ENV_FILE:
+    environ.Env.read_env()
+
+
+DEBUG = env('DEBUG') # False if not in os.environ
+
+SECRET_KEY= env('SECRET_KEY') 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1vnz848#9@gw(ck8q+b&acu+v4ln9_cx+tsa^(x5vgys-e-iu@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+print(BASE_DIR)
 
 ALLOWED_HOSTS = []
 
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'knox',
+    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #whitenoise middleware
 ]
 
 ROOT_URLCONF = 'blogging.urls'
@@ -81,8 +90,12 @@ WSGI_APPLICATION = 'blogging.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD' : env("DB_PASSWORD"),
+        'HOST' : env("DB_HOST"),
+        'PORT' : env("DB_PORT"),
     }
 }
 
@@ -121,8 +134,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -143,10 +154,12 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static_root')
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR , '/static')
+    os.path.join(BASE_DIR,'static_root')
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
