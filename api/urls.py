@@ -14,15 +14,15 @@ from .views import (
 urlpatterns = [
     
     #Authentication
-    path('register', RegisterAPI.as_view()),
-    path('login', LoginAPI.as_view()),
+    path('register', RegisterAPI.as_view(), name='register'),
+    path('login', LoginAPI.as_view(), name='login'),
     path('logout', knox_views.LogoutView.as_view()),
 
     #Blogs
-    path('create', CreateBlog.as_view()),
-    path('posts/', ListAllBlogs.as_view()),
-    path('posts/<int:pk>', ListOneBlog.as_view()),
-    path('posts/<int:pk>/edit', EditBlog.as_view()),
-    path('posts/<int:pk>/delete', DeleteBlog.as_view()),
+    path('create', CreateBlog.as_view(), name='create-blog'),
+    path('posts/', ListAllBlogs.as_view(), name='list-all-blogs'),
+    path('posts/<int:pk>', ListOneBlog.as_view(), name='list-one-blog'),
+    path('posts/<int:pk>/edit', EditBlog.as_view(), name='edit-blog'),
+    path('posts/<int:pk>/delete', DeleteBlog.as_view(), name='delete-blog'),
     
 ]
