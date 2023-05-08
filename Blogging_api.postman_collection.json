@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"testuser12\",\n    \"password\": \"testuser1\",\n    \"email\": \"admina@gmail.com\"\n}",
+							"raw": "{\n    \"username\": \"testuser21\",\n    \"password\": \"testuser21\",\n    \"email\": \"admina@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,7 +148,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"testuser1\",\n    \"password\": \"testuser1\"\n}",
+							"raw": "{\n    \"username\": \"testuser21\",\n    \"password\": \"testuser21\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -320,7 +320,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "rahtxh",
+									"value": "JSdniaW",
 									"type": "default"
 								},
 								{
@@ -467,7 +467,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/api/posts/?page=1",
+							"raw": "{{BASE_URL}}/api/posts/?page=2",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -479,7 +479,7 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -742,14 +742,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/posts/5/edit",
+							"raw": "{{BASE_URL}}/api/posts/14/edit",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"5",
+								"14",
 								"edit"
 							]
 						}
@@ -882,14 +882,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/api/posts/5/delete",
+							"raw": "{{BASE_URL}}/api/posts/14/delete",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"5",
+								"14",
 								"delete"
 							]
 						}
@@ -1055,7 +1055,7 @@
 		},
 		{
 			"key": "TOKEN",
-			"value": "158a667ccda7bf7531cc583d974854dd7031e28c5cc81f516d2fc90c2fc510aa",
+			"value": "c28e1cc1566f311e72568e1dda72178bd87b0751f6c46cc9bed9e1b5843c0577",
 			"type": "default"
 		}
 	]
