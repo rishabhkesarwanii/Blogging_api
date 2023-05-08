@@ -108,6 +108,20 @@ At every login or register a new token is generated for the user
 | :-------- | :------- | :-------------------------------- |
 | `Authorization`      | `string` | **Required**. The authentication token for the user making the request      |
 
+#### Change Password
+
+```
+  POST /logout
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `old_password`      | `string` | **Required**. Old password of the user      |
+| `new_password`      | `string` | **Required**. new password of the user      |
+| `Authorization`      | `string` | **Required**. The authentication token for the user making the request      |
+
+Change-Password, Token(Header) should be passed in "Body: form-data" type:JSON
+
 #### List Blogs
 
 ```
@@ -147,9 +161,7 @@ Filter out Blog on the basis of its primary key
 | `Authorization`      | `string` | **Required**. The authentication token for the user making the request      |
 
 
-
-
-Lets you create a new blog, all fields except Token(Header) should be passed in "Body: form-data"
+Lets you create a new blog, all fields except Token(Header) should be passed in "Body: form-data" type:JSON
 
 
 #### Edit a Particular Blog
@@ -166,9 +178,9 @@ Lets you create a new blog, all fields except Token(Header) should be passed in 
 | `image`      | `file` | An image file to use as the blog image  |
 | `Authorization`      | `string` | **Required**. The authentication token for the user making the request      |
 
-Lets you Edit a blog, Token(Header) should be passed in "Body: form-data"
 
 
+Lets you create a new blog, all fields except Token(Header) and pk should be passed in "Body: form-data" type:JSON
 
 
 #### Delete a Particular Blog

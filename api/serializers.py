@@ -10,7 +10,10 @@ class UserSerializer(serializers.ModelSerializer): #ModelSerializer for the User
         fields = ('id', 'username', 'email') #fields that will be returned in the response
 
 
-
+class ChangePasswordSerializer(serializers.Serializer): #Serializer for changing the password
+    model = User
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer): #ModelSerializer for the User model

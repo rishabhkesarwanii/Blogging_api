@@ -10,7 +10,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework import permissions
 
 #Import from api
-from .serializers import UserSerializer, RegisterSerializer, BlogSerializer
+from .serializers import UserSerializer, RegisterSerializer, BlogSerializer, ChangePasswordSerializer
 from .models import Blogs
 from .forms import BlogForm
 
@@ -44,6 +44,37 @@ class LoginAPI(LoginView):
         user = serializer.validated_data['user'] #validated_data is the data after it has been validated
         login(request, user) #login the user
         return super(LoginAPI, self).post(request, format=None) #return the response
+
+
+
+class ChangePasswordView(generics.UpdateAPIView):
+    serializer_class = ChangePasswordSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_object(self, queryset=None):
+        obj = self.request.user
+        return obj
+
+    def put(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+            # Check old password
+            if not self.object.check_password(serializer.data.get("old_password")):
+                return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
+            # set_password also hashes the password that the user will get
+            self.object.set_password(serializer.data.get("new_password"))
+            self.object.save()
+            response = {
+                'status': 'success',
+                'message': 'Password updated successfully',
+            }
+
+            return Response(response, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
