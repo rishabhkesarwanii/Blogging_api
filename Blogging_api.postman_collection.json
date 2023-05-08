@@ -1,0 +1,1062 @@
+{
+	"info": {
+		"_postman_id": "8820ef03-4428-42ce-a87a-eefc2d724ce8",
+		"name": "Blogging_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser12\",\n    \"password\": \"testuser1\",\n    \"email\": \"admina@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"testuser1\",\n    \"password\": \"testuser1\",\n    \"email\": \"admina@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 20:57:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c60516e19ecb9-DEL"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"testuser1\",\n        \"email\": \"admina@gmail.com\"\n    },\n    \"token\": \"7ecbe9fe0c30742e431087c8531277fe894a12bfb2a132de6fb569e4ee355425\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser1\",\n    \"password\": \"testuser1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"testuser1\",\n    \"password\": \"testuser1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 20:57:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "set-cookie",
+									"value": "csrftoken=514fcAYVOhqVlLdiCKwjQMPOaKAxIzxD; expires=Sun, 05 May 2024 20:57:54 GMT; Max-Age=31449600; Path=/; SameSite=Lax; Secure"
+								},
+								{
+									"key": "set-cookie",
+									"value": "sessionid=nl0vj3mozrfvu5v5bh632kyiltdbk9cs; expires=Sun, 21 May 2023 20:57:54 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax; Secure"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c60ae1cb9ecb9-DEL"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"expiry\": \"2023-05-08T06:57:54.288300Z\",\n    \"token\": \"14e7e2c30c908a698f1a0589cd48b0f1bbaecc6722d7c9d6161415b655ffc9c6\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "rahtxh",
+									"type": "default"
+								},
+								{
+									"key": "content",
+									"value": "jgkhvf r ssger e ",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/rishabh/Pictures/Screenshots/postman sc1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Blog",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "rahtxh",
+											"type": "default"
+										},
+										{
+											"key": "content",
+											"value": "jgkhvf r ssger e ",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/rishabh/Pictures/Screenshots/postman sc1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 21:06:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "201"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c6cfe5ecfecb9-DEL"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blog\": {\n        \"id\": 13,\n        \"title\": \"rahtxh\",\n        \"content\": \"jgkhvf r ssger e\",\n        \"image\": \"https://plankton-app-ivsf4.ondigitalocean.app/media/images/postman_sc1.png\"\n    },\n    \"message\": \"Blog created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List All Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/posts/?page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List All Blogs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/posts/?page=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 21:26:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept, Accept-Encoding"
+								},
+								{
+									"key": "allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Sun, 07 May 2023 21:26:10 GMT"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c8a1b3e9c9633-DEL"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Blogs\": [\n        {\n            \"id\": 1,\n            \"title\": \"First Blog After hosting\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": \"https://plankton-app-ivsf4.ondigitalocean.app/media/images/Screenshot_from_2023-04-18_15-53-49.png\",\n            \"date_created\": \"2023-05-07T20:58:57.588558Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Created anothe blog\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T20:59:51.488291Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 3,\n            \"title\": \"udkbjvjC\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:02.321298Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 4,\n            \"title\": \"396glsn\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:08.604141Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 6,\n            \"title\": \"fafcvbdis\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:23.604907Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 7,\n            \"title\": \"8jdxnod\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:31.853988Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 8,\n            \"title\": \"67673\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:40.165385Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 9,\n            \"title\": \"<JGdu>B..s\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:49.714979Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 10,\n            \"title\": \"vxbdhsue\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:00:58.030303Z\",\n            \"author\": 1\n        },\n        {\n            \"id\": 11,\n            \"title\": \"dnbfd\",\n            \"content\": \"This is the first blog thatis hosted\",\n            \"image\": null,\n            \"date_created\": \"2023-05-07T21:01:04.730591Z\",\n            \"author\": 1\n        }\n    ],\n    \"current_page\": 1,\n    \"total_pages\": 2,\n    \"total_items\": 12\n}"
+						}
+					]
+				},
+				{
+					"name": "List One Blog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/posts/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List One Blog",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/posts/3/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"3",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 21:26:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept, Accept-Encoding"
+								},
+								{
+									"key": "allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Sun, 07 May 2023 21:26:53 GMT"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c8b2b5d1d9633-DEL"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Blog\": {\n        \"id\": 3,\n        \"title\": \"udkbjvjC\",\n        \"content\": \"This is the first blog thatis hosted\",\n        \"image\": null,\n        \"date_created\": \"2023-05-07T21:00:02.321298Z\",\n        \"author\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Blog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "This edited",
+									"type": "default"
+								},
+								{
+									"key": "content",
+									"value": "the updated content part 2",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/rishabh/Pictures/Screenshots/Screenshot from 2023-04-20 11-10-18.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/posts/5/edit",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"5",
+								"edit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit Blog",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "This edited",
+											"type": "default"
+										},
+										{
+											"key": "content",
+											"value": "the updated content part 2",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/rishabh/Pictures/Screenshots/Screenshot from 2023-04-20 11-10-18.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/posts/5/edit/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"5",
+										"edit",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 21:02:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept, Accept-Encoding"
+								},
+								{
+									"key": "allow",
+									"value": "PUT, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c66e5ddd1ecb9-DEL"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blog\": {\n        \"id\": 5,\n        \"title\": \"This edited\",\n        \"content\": \"the updated content part 2\",\n        \"image\": \"https://plankton-app-ivsf4.ondigitalocean.app/media/images/Screenshot_from_2023-04-20_11-10-18.png\"\n    },\n    \"message\": \"Blog updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/posts/5/delete",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"5",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/posts/5/delete",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"5",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 May 2023 21:03:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "allow",
+									"value": "DELETE, OPTIONS"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains; preload"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "cross-origin-opener-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-do-app-origin",
+									"value": "f34ca43e-1d03-4f25-9be1-9fe4af66a7d2"
+								},
+								{
+									"key": "cache-control",
+									"value": "private"
+								},
+								{
+									"key": "x-do-orig-status",
+									"value": "200"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7c3c692b1a29ecb9-DEL"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Blog deleted successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/logout",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Token {{TOKEN}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://plankton-app-ivsf4.ondigitalocean.app",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": "158a667ccda7bf7531cc583d974854dd7031e28c5cc81f516d2fc90c2fc510aa",
+			"type": "default"
+		}
+	]
+}

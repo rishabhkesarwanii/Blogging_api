@@ -1,0 +1,7 @@
+DEBUG= None
+SECRET_KEY='None'
+DB_NAME=None
+DB_USER=None
+DB_PASSWORD=None
+DB_HOST=None
+DB_PORT=None

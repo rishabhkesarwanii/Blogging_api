@@ -8,13 +8,15 @@ class EndpointTests(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='testpassword') 
         self.blog = Blogs.objects.create(title='Test Blog', content='This is a test blog.', author=self.user)
+        
+        self.token = None
 
 
 
 
     def test_register_user(self):
         url = reverse('api:register')
-        data = {'username': 'newuser', 'password': 'newpassword'}
+        data = {'username': 'testuser','email':'test@test.com', 'password': 'testpassword'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(User.objects.count(), 2)
@@ -29,16 +31,24 @@ class EndpointTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('token', response.data)
 
+        response_data = response.json()
+        token = response_data['token']
+
+        # Store the token for later use
+        self.token = token
 
 
 
     def test_create_blog(self):
         self.client.login(username='testuser', password='testpassword')
+        headers = {'Authorization': f'Token {self.token}'}
         url = reverse('api:create-blog')
         data = {'title': 'New Blog', 'content': 'This is a new blog.'}
         response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED, **headers)
         self.assertEqual(Blogs.objects.count(), 2)
+
+        
 
 
 

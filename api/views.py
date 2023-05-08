@@ -30,7 +30,7 @@ class RegisterAPI(generics.GenericAPIView): #GenericAPIView is used to create a 
         return Response({
         "user": UserSerializer(user, context=self.get_serializer_context()).data, #serialized representation of a user object
         "token": AuthToken.objects.create(user)[1] #create a token for the user
-        })
+        }, status=status.HTTP_201_CREATED) #return the response
 
 
 
