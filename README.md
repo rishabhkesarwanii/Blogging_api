@@ -111,7 +111,7 @@ At every login or register a new token is generated for the user
 #### Change Password
 
 ```
-  POST /logout
+  PUT /change-password
 ```
 
 | Parameter | Type     | Description                       |
@@ -186,7 +186,7 @@ Lets you create a new blog, all fields except Token(Header) and pk should be pas
 #### Delete a Particular Blog
 
 ```
-  GET /api/<int:pk>/delete
+  DELETE /api/<int:pk>/delete
 ```
 
 | Parameter | Type     | Description                       |
